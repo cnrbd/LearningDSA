@@ -20,7 +20,60 @@ public class SList {
         while (curr.next != null) {
             curr = curr.next;
         }
+        // after the while loop the curr node is the last node of the linked list
         curr.next = newNode;
+    }
+
+    public int size() {
+        int count = 0;
+
+        if (head == null) {
+            return -1;
+        }
+        SListNode curr = head;
+
+        // by doing curr != null, the loop iterates to the last node
+        while (curr != null) {
+            count++;
+            curr = curr.next;
+        }
+        return count;
+    }
+
+    public int max() {
+        if (head == null) {
+            return -1;
+        }
+        // start at the node after the first one so we dont compare max to the same
+        // value to avoid redudancy
+        SListNode curr = head.next;
+        int max = head.data;
+        while (curr != null) {
+            if (curr.data > max) {
+                max = curr.data;
+            }
+            curr = curr.next;
+        }
+        return max;
+
+    }
+
+    public int min() {
+
+        if (head == null) {
+            return -1;
+        }
+
+        SListNode curr = head.next;
+        int min = head.data;
+
+        while (curr != null) {
+            if (curr.data < min) {
+                min = curr.data;
+            }
+            curr = curr.next;
+        }
+        return min;
     }
 
     public String toString() {
